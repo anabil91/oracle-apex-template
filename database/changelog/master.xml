@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Single deployment entry point.
+    cd database/changelog
+    lb update -changelog-file master.xml
+  Order: versioned structure first, then repeatable code (which depends on it).
+-->
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+  <include file="releases/release_index.xml" relativeToChangelogFile="true"/>
+  <include file="repeatable.xml"             relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

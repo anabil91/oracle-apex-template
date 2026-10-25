@@ -1,0 +1,36 @@
+# Local environment / secrets
+environments/*.env
+!environments/*.env.example
+*.wallet
+wallet/
+Wallet_*/
+*.sso
+*.p12
+tnsnames.ora
+sqlnet.ora
+
+# Build output
+dist/
+artifact/
+build/
+*.zip
+
+# Test & coverage reports
+reports/
+coverage*.html
+coverage*.xml
+junit*.xml
+
+# Logs / spool
+*.log
+*.lst
+*.out
+
+# Editors / OS
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+.DS_Store
+Thumbs.db

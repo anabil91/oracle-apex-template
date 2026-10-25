@@ -1,0 +1,13 @@
+# Reviewers are requested automatically based on the paths a PR touches.
+# Personal account for now; replace with org teams (e.g. @org/db-developers) when the repo moves to an organization.
+
+*                               @anabil91
+
+/apex/                          @anabil91
+/database/                      @anabil91
+/database/changelog/releases/   @anabil91
+/tests/                         @anabil91
+/ci/                            @anabil91
+/scripts/                       @anabil91
+/.github/                       @anabil91
+/CLAUDE.md                      @anabil91

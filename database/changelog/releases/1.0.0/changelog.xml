@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Versioned (run-once) changes for release 1.0.0.
+  id = <ticket>-<n>, author = git username. NEVER edit a changeset after it is merged.
+-->
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+  <changeSet id="APP-1-1" author="template" labels="1.0.0" runWith="sqlcl">
+    <comment>Create CUSTOMERS table</comment>
+    <sqlFile path="../../../schemas/app_owner/tables/customers.sql"
+             relativeToChangelogFile="true"
+             splitStatements="false" stripComments="false"/>
+    <rollback>drop table customers purge</rollback>
+  </changeSet>
+
+  <!-- Example of a later ALTER (inline, because tables/*.sql holds the full current DDL):
+  <changeSet id="APP-42-1" author="jdoe" labels="1.1.0">
+    <sql>alter table customers add (phone varchar2(30 char))</sql>
+    <rollback>alter table customers drop column phone</rollback>
+  </changeSet>
+  -->
+
+</databaseChangeLog>
