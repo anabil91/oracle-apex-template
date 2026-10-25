@@ -1,0 +1,32 @@
+{
+  "nodes": [
+    {
+      "id": "apex_static_files_js_app",
+      "label": "app.js",
+      "file_type": "code",
+      "source_file": "apex/static_files/js/app.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    }
+  ],
+  "edges": [],
+  "input_tokens": 0,
+  "output_tokens": 0,
+  "failed_sources": [
+    "D:\\Repos\\oracle-apex-template\\database\\schemas\\app_owner\\tables\\customers.sql",
+    "D:\\Repos\\oracle-apex-template\\scripts\\export\\export_apex.sql",
+    "D:\\Repos\\oracle-apex-template\\tests\\utplsql\\install_tests.sql",
+    "D:\\Repos\\oracle-apex-template\\tests\\utplsql\\run_tests.sql"
+  ],
+  "skipped_sources": [
+    "D:\\Repos\\oracle-apex-template\\.vscode\\extensions.json"
+  ],
+  "extracted_sources": [
+    "D:\\Repos\\oracle-apex-template\\.vscode\\extensions.json",
+    "D:\\Repos\\oracle-apex-template\\apex\\static_files\\js\\app.js",
+    "D:\\Repos\\oracle-apex-template\\database\\schemas\\app_owner\\tables\\customers.sql",
+    "D:\\Repos\\oracle-apex-template\\scripts\\export\\export_apex.sql",
+    "D:\\Repos\\oracle-apex-template\\tests\\utplsql\\install_tests.sql",
+    "D:\\Repos\\oracle-apex-template\\tests\\utplsql\\run_tests.sql"
+  ]
+}
