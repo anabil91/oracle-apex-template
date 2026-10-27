@@ -34,3 +34,6 @@ junit*.xml
 *.swp
 .DS_Store
 Thumbs.db
+
+# AI agent scratch space
+scratch/

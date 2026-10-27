@@ -63,7 +63,10 @@ oracle-apex-template/
 │   └── adr/
 │
 ├── .github/                      # PR template, CODEOWNERS, workflows
-├── CLAUDE.md                     # Conventions & rules for the automated AI reviewer
+├── AGENTS.md                     # Single source of truth for AI tools + automated reviewer rules
+├── CLAUDE.md  GEMINI.md          # Thin pointers that import AGENTS.md (Claude Code / Gemini, Antigravity)
+├── .agents/                      # Shared agent rules, workflows and uc-apx skills (tool-neutral)
+├── ai_generate/                  # Reviewable SQL prepared by agents (not a deploy path)
 ├── CONTRIBUTING.md               # Developer workflow (read this first)
 ├── .editorconfig  .gitattributes  .gitignore
 ```
