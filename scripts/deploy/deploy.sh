@@ -29,10 +29,16 @@ if [[ -z "${cfg[DB_PASSWORD]:-}" ]]; then
   cfg[DB_PASSWORD]="$pw"
 fi
 
+# Git Bash on Windows: stop it rewriting "/nolog" into a Windows path, and stop the
+# `sql` launcher wrapping SQLcl in winpty (which rejects piped input: "stdin is not a tty").
+export MSYS_NO_PATHCONV=1 SQLCL_WRAPPED=1
+# SQLcl is a Windows program, so give it a Windows-style path (D:/...) when we can.
+root_for_sqlcl="$(cd "$root" && pwd -W 2>/dev/null || pwd)"
+
 run_sqlcl() {  # stdin = SQLcl commands; the password never appears on the command line
   { printf 'connect %s/%s@%s\n' "${cfg[DB_USER]}" "${cfg[DB_PASSWORD]}" "${cfg[DB_CONNECT]}"
     printf 'whenever sqlerror exit failure rollback\nset define off\n'
-    printf 'cd %s/database/changelog\n' "$root"
+    printf 'cd %s/database/changelog\n' "$root_for_sqlcl"
     cat
     printf 'exit\n'
   } | sql -S -noupdates /nolog

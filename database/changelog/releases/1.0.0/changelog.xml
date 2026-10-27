@@ -9,11 +9,11 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-  <changeSet id="APP-1-1" author="template" labels="1.0.0" runWith="sqlcl">
+  <changeSet id="APP-1-1" author="template" labels="1.0.0">
     <comment>Create CUSTOMERS table</comment>
     <sqlFile path="../../../schemas/app_owner/tables/customers.sql"
              relativeToChangelogFile="true"
-             splitStatements="false" stripComments="false"/>
+             splitStatements="true" stripComments="false"/>
     <rollback>drop table customers purge</rollback>
   </changeSet>
 
