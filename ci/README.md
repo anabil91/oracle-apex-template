@@ -9,7 +9,7 @@
 | 3 | **Ephemeral DB** | Oracle Database Free container (`gvenzl/oracle-free`), with APEX installed or a prebuilt image containing APEX | — |
 | 4 | **Deploy** | `scripts/deploy/deploy.sh ci`: Liquibase update, compile, APEX install | deploy error or invalid objects |
 | 5 | **Unit tests** | utPLSQL v3 + utPLSQL-cli | any failing test; coverage on changed code < 80% |
-| 6 | **Automated review** | AI reviewer driven by `CLAUDE.md` rules + `ci/review/` config, posting inline PR comments | any `[BLOCKING]` finding (configurable) |
+| 6 | **Automated review** | AI reviewer driven by `AGENTS.md` rules + `ci/review/` config, posting inline PR comments | any `[BLOCKING]` finding (configurable) |
 | 7 | **Human review** | CODEOWNERS + branch protection | — |
 
 Each stage publishes artifacts: lint report, JUnit, Cobertura, review summary.

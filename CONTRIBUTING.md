@@ -50,3 +50,13 @@ Rules:
 ## 6. Coding standards
 
 See [docs/coding-standards.md](docs/coding-standards.md). The automated reviewer enforces them.
+
+## 7. Working with AI coding tools
+
+The repo works with Claude Code, Gemini and Antigravity (use whichever your company allows).
+
+- All conventions live in [AGENTS.md](AGENTS.md). `CLAUDE.md` and `GEMINI.md` only import it, so edit `AGENTS.md`.
+- Shared rules, workflows and `uc-apx` skills live in `.agents/`. Don't add tool-specific copies.
+- Agents are read-only on `test` and `prod`. Anything they want deployed goes to `ai_generate/YYYY-MM-DD/` and goes through PR review.
+- AI-written code follows the same rules as yours: tests, changeset with rollback, no secrets.
+- Refresh the skills after upgrading SQLcl: `uc-apx skills sync --agent universal`.
