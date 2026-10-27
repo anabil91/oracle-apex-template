@@ -14,6 +14,7 @@ Apply to every AI tool working in this repo. `environments/README.md` defines th
 - Preview affected rows and dependencies before DML/DDL.
 - Inspect a script before running it. Stop if it contains an unexpected `CONNECT`.
 - Use `SET DEFINE OFF` when running source code that contains `&`.
+- Never run `scripts/deploy/deploy.sh` against `test`, `demo` or `prod`. `--preview` on `dev` is fine.
 - Do not use a `SYS`/`SYSDBA` connection for project work.
 
 ## Repository
