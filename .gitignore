@@ -37,3 +37,6 @@ Thumbs.db
 
 # AI agent scratch space
 scratch/
+
+# APEXlang per-environment deployment settings (contain the session state checksum salt)
+apex/apps/*/deployments/

@@ -33,13 +33,13 @@ scripts/deploy/deploy.sh test             # asks you to type the environment nam
 | Env | Who deploys | When |
 |---|---|---|
 | dev | any developer | after the PR is merged |
-| test | developer or team lead | after dev looks fine |
-| demo | release owner | from a tagged release |
-| prod | release owner | from the same tagged release, after approval |
+| test | team lead | after dev looks fine |
+| demo | team lead | from a tagged release |
+| prod | architecture team | from the same tagged release, after approval |
 
 Always `git checkout main && git pull` first, so you deploy what was reviewed. Deploying a tag instead: `git checkout vX.Y.Z`.
 
-APEX applications are still imported/exported with the APEX tools (`scripts/export/export_apex.sql`). `deploy.sh` covers database changes only.
+`deploy.sh` deploys the database first, then imports every app in `APEX_APPS`. Export from DEV with `scripts/export/export_apex.sh dev` (see `apex/README.md`).
 
 ## Why changes stop getting missed
 

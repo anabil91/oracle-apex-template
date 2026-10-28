@@ -14,11 +14,11 @@ APEX stores the app in the database, not in files, so we need discipline:
 
 1. **Lock the pages** you're editing (Page Designer → lock icon) so others can't overwrite them.
 2. For larger changes, use an **APEX Working Copy** (APEX 24.1+) and merge it back when done.
-3. When finished, **export** the app into the repo:
+3. When finished, **export** the app into the repo as APEXlang (Git Bash):
    ```
-   sql /nolog @scripts/export/export_apex.sql 100
+   scripts/export/export_apex.sh dev 100
    ```
-   (Or by hand: `apex export -applicationid 100 -split -exptype APPLICATION_SOURCE,READABLE_YAML -expOriginalIds -skipExportDate`.)
+   (Or by hand in SQLcl: `apex export -applicationid 100 -exptype APEXLANG -skipexportdate -dir apex/apps`.) See [apex/README.md](apex/README.md) for the file-first way with `uc-apx`.
 4. **Commit only the files related to your change.** If the export shows changes to pages you didn't touch, someone else's work is in the shared DEV workspace. Don't commit those files. Discard them with `git restore <file>`.
 5. Unlock your pages after the PR is merged.
 

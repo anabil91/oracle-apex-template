@@ -1,0 +1,62 @@
+app UX-PATTERN-CATALOG (
+    name: Oracle APEX UX Pattern Catalog
+    version: 26.2.1
+    logo {
+        type: text
+        text: Oracle APEX UX Pattern Catalog
+    }
+    navigation {
+        homeUrl: {
+            page: 1
+        }
+    }
+    navigationMenu {
+        listTemplate: @/side-navigation-menu
+        templateOptions: [
+            #DEFAULT#
+            js-defaultCollapsed
+            js-navCollapsed--hidden
+            t-TreeNav--styleB
+        ]
+        list: @navigation-menu
+    }
+    navigationBar {
+        list: @navigation-bar
+        listTemplate: @/navigation-bar
+        templateOptions: #DEFAULT#
+    }
+    userInterface {
+        currentTheme: @universal-theme
+        globalPage: 0
+        addBuiltWithApexToFooter: false
+    }
+    appFormatMasks {
+        date: DS
+        timestamp: DS
+        timestampTimeZone: DS
+    }
+    authentication {
+        scheme: @oracle-apex-accounts
+    }
+    security {
+        deepLinking: true
+        allowBotAccess: true
+    }
+    sessionManagement {
+        rejoinSessions: publicSessions
+    }
+    runtime {
+        allowFeedback: true
+    }
+    advanced {
+        modernizeApp: true
+    }
+
+    substitution APP_NAME (
+        value {
+            staticValue: Oracle APEX UX Pattern Catalog
+        }
+    )
+
+)
+

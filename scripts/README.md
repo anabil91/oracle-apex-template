@@ -5,9 +5,11 @@ Each script reads its connection from environment variables (see `environments/`
 
 | Folder | Script (planned) | Purpose |
 |---|---|---|
-| `export/` | `export_apex.sql` ✅ | Export an app in split/readable format into `apex/apps/` |
+| `lib/` | `sqlcl.sh` ✅ | Shared: reads `environments/<env>.env`, connects (saved connection or prompt), refuses the wrong session user |
+| `export/` | `export_apex.sh <env> [app_id]` ✅ | Export apps as APEXlang into `apex/apps/<alias>/`, staged in `scratch/`, refuses to overwrite uncommitted edits |
+| `check_setup.sh` | ✅ | Check the tools and settings a new clone needs |
 | `build/`  | `build.sh` | Validate changelogs, minify `static_files`, package `dist/<version>.zip` (database + apex + static files) |
-| `deploy/` | `deploy.sh <env> [--preview]` ✅ (database only; APEX/static steps planned) | 1. `lb update -changelog-file master.xml` 2. recompile invalid objects (fails if any remain invalid) 3. upload static files 4. install APEX app with `apex_application_install` |
+| `deploy/` | `deploy.sh <env> [--preview]` ✅ | 1. `lb update` 2. `apex import` of each app in `APEX_APPS` (preview: `lb update-sql` + `apex validate`). Planned: recompile check, static files |
 | `test/`   | `install_utplsql.sh` | Install the utPLSQL framework into the ephemeral CI database |
 | `test/`   | `run_tests.sh` | Install test packages and run utPLSQL-cli (JUnit + Cobertura) |
 | `test/`   | `check_coverage.sh` | Fail when coverage on changed files falls below the threshold |
