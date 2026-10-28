@@ -7,7 +7,7 @@ Several developers change APEX pages, PL/SQL, and table structures at the same t
 
 ## Decision
 - One repository per APEX application family, containing `apex/`, `database/`, `tests/`, `scripts/`, `ci/`.
-- APEX exported as split + readable YAML with original IDs.
+- APEX exported as APEXlang (`.apx`), one folder per app alias (originally split + readable YAML; changed when moving to APEX 26.1+).
 - Database source stored as one file per object, under `schemas/<schema>/<object_type>/`.
 - Tests mirror the source layout.
 

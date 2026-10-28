@@ -1,3 +1,7 @@
+---
+description: Make a database change: object file, Liquibase changeset with rollback, tests
+---
+
 # Workflow: make a database change
 
 Follow `CONTRIBUTING.md` section 3.

@@ -5,10 +5,18 @@ and for the automated PR reviewer. `CLAUDE.md` and `GEMINI.md` only import this 
 conventions here, never there. Keep it in sync with `docs/coding-standards.md`.
 
 ## Project facts
-- Oracle Database 19c+/23ai, Oracle APEX 24.x, SQLcl for export/deploy, Liquibase (via SQLcl `lb`) for change tracking, utPLSQL v3 for tests.
-- Main schema: `APP_OWNER`. APEX parsing schema: `APP_OWNER`.
-- Layout: see README.md. Source: `database/schemas/<schema>/<object_type>/<object_name>.<ext>`.
+- Oracle Database 19c+/23ai, Oracle APEX 26.1+, SQLcl 26.1+ for export/deploy, Liquibase (via SQLcl `lb`) for change tracking, utPLSQL v3 for tests.
+- One repo per database. Layout: see README.md. Source: `database/schemas/<schema>/<object_type>/<object_name>.<ext>`.
+- APEX apps are APEXlang (`.apx`) in `apex/apps/<alias>/`. See `apex/README.md`.
+- Scripts (Git Bash): `scripts/check_setup.sh`, `scripts/export/export_apex.sh <env>`, `scripts/deploy/deploy.sh <env> [--preview]`.
 - Many developers work in parallel: follow `CONTRIBUTING.md` (branch per work item, PR, CODEOWNERS review).
+
+## Schemas and apps
+Fill in when adopting the template. Several apps may share one schema.
+
+| Schema | Owns | Folder | Apps (id: folder) |
+|---|---|---|---|
+| `APP_OWNER` | tables, packages, views | `database/schemas/app_owner/` | `100: ux-pattern-catalog` (sample, workspace `DEMO`) |
 
 ## Agent contract
 Applies to every tool. Before non-trivial work read `.agents/rules/agent-safety.md`.
@@ -23,7 +31,7 @@ Applies to every tool. Before non-trivial work read `.agents/rules/agent-safety.
 1. **SQL injection**: dynamic SQL (`EXECUTE IMMEDIATE`, `DBMS_SQL`, `OPEN ... FOR <string>`) that concatenates user input. Require bind variables or `DBMS_ASSERT`.
 2. **APEX XSS**: items/report columns with escaping disabled, or `htp.p` of unescaped user data. Require `apex_escape.html`.
 3. **Edited released changeset**: changes to a changeset in `database/changelog/releases/` that already exists on `main`.
-4. **Secrets**: passwords, wallets, tokens or connection strings with credentials in any file.
+4. **Secrets**: passwords, wallets, tokens or connection strings with credentials in any file, a real `environments/*.env`, or any `apex/apps/*/deployments/` file (holds the checksum salt).
 5. **Missing tests**: a new/changed public routine in `database/**/packages/*.pkb` with no matching change in `tests/utplsql/`.
 6. **`WHEN OTHERS` without re-raise or logging**, or `WHEN OTHERS THEN NULL`.
 7. **`COMMIT`/`ROLLBACK` inside API packages** called from APEX (transaction control belongs to the caller), unless the routine is documented as autonomous/batch.
