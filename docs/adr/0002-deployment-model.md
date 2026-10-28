@@ -9,7 +9,7 @@ Every environment must reach the same state, re-running a deployment must be saf
 - Use **Liquibase through SQLcl** (`lb update`). It ships with SQLcl and records history in `DATABASECHANGELOG`.
 - **Versioned** changesets (run once) for structure and data: tables, columns, indexes, constraints, sequences, data migrations. Grouped per release under `changelog/releases/<version>/`.
 - **Repeatable** changesets (`runOnChange="true"`) for code: packages, views, triggers, procedures, functions. They point at the object's source file, so the file in `schemas/` is the single source of truth.
-- Changesets run through SQLcl (`runWith="sqlcl"`) so the source files stay plain SQL*Plus-style scripts.
+- Changesets run through JDBC. SQLcl 26.3 has no `runWith` executor (tested: `sqlcl` and `script` both fail with "No executor found"), so PL/SQL files use `endDelimiter="/"` and table scripts end statements with `;`.
 
 ## Alternatives considered
 - **SQLcl `project` command** (`project init/export/stage/release/deploy`): Oracle's newer opinionated workflow that generates changelogs from a dev schema. A good fit if the team prefers generating changes over hand-writing them. This layout can migrate to it later.

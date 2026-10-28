@@ -2,7 +2,7 @@
 <!--
   Repeatable code objects: re-deployed whenever the file's checksum changes.
   Order matters: specs before bodies, dependencies first.
-  runWith="sqlcl" executes the file through SQLcl, so the trailing "/" of PL/SQL units works as-is.
+  executes the file through SQLcl, so the trailing "/" of PL/SQL units works as-is.
 -->
 <databaseChangeLog
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
@@ -11,17 +11,17 @@
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
   <!-- ===== app_owner : package specs ===== -->
-  <changeSet id="app_owner.customer_api.pks" author="repeatable" runOnChange="true" runWith="sqlcl">
+  <changeSet id="app_owner.customer_api.pks" author="repeatable" runOnChange="true">
     <sqlFile path="../schemas/app_owner/packages/customer_api.pks" relativeToChangelogFile="true"
-             splitStatements="false" stripComments="false"/>
+             endDelimiter="/" splitStatements="true" stripComments="false"/>
   </changeSet>
 
   <!-- ===== app_owner : views ===== -->
 
   <!-- ===== app_owner : package bodies ===== -->
-  <changeSet id="app_owner.customer_api.pkb" author="repeatable" runOnChange="true" runWith="sqlcl">
+  <changeSet id="app_owner.customer_api.pkb" author="repeatable" runOnChange="true">
     <sqlFile path="../schemas/app_owner/packages/customer_api.pkb" relativeToChangelogFile="true"
-             splitStatements="false" stripComments="false"/>
+             endDelimiter="/" splitStatements="true" stripComments="false"/>
   </changeSet>
 
   <!-- ===== app_owner : triggers ===== -->

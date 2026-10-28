@@ -6,7 +6,7 @@
 - Create a short-lived branch per work item: `feature/<ticket>-short-desc`, `fix/<ticket>-short-desc`, `hotfix/<ticket>-...`
 - Keep branches small and merge within days, not weeks. APEX metadata conflicts grow with branch age.
 
-See [docs/branching-and-release.md](docs/branching-and-release.md).
+See [docs/branching-and-release.md](docs/branching-and-release.md) and the day-to-day guide [docs/team-workflow.md](docs/team-workflow.md).
 
 ## 2. Working on APEX with multiple developers
 

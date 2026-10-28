@@ -7,7 +7,7 @@ Each script reads its connection from environment variables (see `environments/`
 |---|---|---|
 | `export/` | `export_apex.sql` ✅ | Export an app in split/readable format into `apex/apps/` |
 | `build/`  | `build.sh` | Validate changelogs, minify `static_files`, package `dist/<version>.zip` (database + apex + static files) |
-| `deploy/` | `deploy.sh <env>` | 1. `lb update -changelog-file master.xml` 2. recompile invalid objects (fails if any remain invalid) 3. upload static files 4. install APEX app with `apex_application_install` |
+| `deploy/` | `deploy.sh <env> [--preview]` ✅ (database only; APEX/static steps planned) | 1. `lb update -changelog-file master.xml` 2. recompile invalid objects (fails if any remain invalid) 3. upload static files 4. install APEX app with `apex_application_install` |
 | `test/`   | `install_utplsql.sh` | Install the utPLSQL framework into the ephemeral CI database |
 | `test/`   | `run_tests.sh` | Install test packages and run utPLSQL-cli (JUnit + Cobertura) |
 | `test/`   | `check_coverage.sh` | Fail when coverage on changed files falls below the threshold |
